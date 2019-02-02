@@ -6,5 +6,5 @@ from api.resources.sensor import Sensor
 app = Flask(__name__)
 api = Api(app)
 
-api.add_resource(Device, '/device', '/device/<str:id>')
-api.add_resource(Sensor, '/sensor', '/sensor/<str:id>')
+api.add_resource(Device, '/device', '/device/<string:device_id>')
+api.add_resource(Sensor, '/sensor', '/sensor/<string:sensor_id>')
