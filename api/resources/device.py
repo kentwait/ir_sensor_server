@@ -8,8 +8,28 @@ import sqlite3 as sq
 
 
 class Device(Resource):
-    def get(self, location_id, device_id):
-        pass
+    def get(self, device_id=None):
+        if device_id is None:
+            return self.list_devices()
+        return self.list_command_ids(device_id)
+
+    def list_devices(self):
+        with shelve.open(SHELVE_PATH) as shl:
+            device_ids = list(shl.keys())
+            return {'status': 'success', 
+                    'data': {
+                        'device_ids': device_ids},
+                    }
+
+    def list_command_ids(self, device_id):
+        with shelve.open(SHELVE_PATH) as shl:
+            if device_id not in shl.keys():
+                return error('device_id not found', code=400)
+            command_ids = list(shl[device_id].commands.keys())
+            return {'status': 'success', 
+                    'data': {
+                        'command_ids': command_ids},
+                    }
 
     def post(self, device_id=None):
         # Retrieves ir command from local shelve
