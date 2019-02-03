@@ -39,13 +39,56 @@ class Light(IRDevice):
         brightness_control = control.LevelControl.interactive_setup('brightness')
         print('\n# Tone')
         tone_control = control.LevelControl.interactive_setup('tone')
+        print('\n# Bedroom preset')
+        preset_bedroom_control = control.SetterControl.interactive_setup('preset_bedroom')
+        print('\n# Dining preset')
+        preset_dining_control = control.SetterControl.interactive_setup('preset_dining')
+        print('\n# Study preset')
+        preset_study_control = control.SetterControl.interactive_setup('preset_study')
+        print('\n# Dim/memory preset')
+        dim_control = control.ToggleableControl.interactive_setup('dim')
 
-        # Hack to change tone when light is turned on
+        # Hack to change bright and tone from another control
         def on(self):
             self.commands['on'].emit(emitter_gpio=IR_EMITTER_GPIO)
             self.set_state(True)
-            tone_control.state = 5
+            tone_control.set_state(5)
         power_control.on = on.__get__(power_control)
+
+        def preset_bedroom_set(self):
+            self.commands['set'].emit(emitter_gpio=IR_EMITTER_GPIO)
+            self.set_state(True)
+            brightness_control.set_state(3)
+            tone_control.set_state(2)
+        preset_bedroom_control.set = preset_bedroom_set.__get__(preset_bedroom_control)
+        
+        def preset_dining_set(self):
+            self.commands['set'].emit(emitter_gpio=IR_EMITTER_GPIO)
+            self.set_state(True)
+            brightness_control.set_state(10)
+            tone_control.set_state(2)
+        preset_dining_control.set = preset_dining_set.__get__(preset_dining_control)
+        
+        def preset_study_set(self):
+            self.commands['set'].emit(emitter_gpio=IR_EMITTER_GPIO)
+            self.set_state(True)
+            brightness_control.set_state(10)
+            tone_control.set_state(8)
+        preset_study_control.set = preset_study_set.__get__(preset_study_control)
+
+        def dim_on(self):
+            self.commands['on'].emit(emitter_gpio=IR_EMITTER_GPIO)
+            self.set_state(True)
+            brightness_control.set_state(1)
+            tone_control.set_state(1)
+        dim_control.on = dim_on.__get__(dim_control)
+
+        def dim_off(self):
+            self.commands['off'].emit(emitter_gpio=IR_EMITTER_GPIO)
+            self.set_state(False)
+            brightness_control.set_state(3)
+            tone_control.set_state(2)
+        dim_control.off = dim_off.__get__(dim_control)
 
         print('--------------------')
         print(' Additional setting ')
@@ -170,7 +213,7 @@ def additional_commands():
                 print('  {} : {}'.format(k, v))
             kind = int(input('Choice: ').strip())
             print('Now setting up the setting/control...')
-            controller = control_choices[kind].interactive_setup()
+            controller = control_choices[kind].interactive_setup(name)
             kwargs[name] = controller
             print('Control "{}" saved.\n'.format(name))
         except KeyboardInterrupt:
