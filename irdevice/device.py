@@ -31,11 +31,11 @@ class Light(IRDevice):
         device_id = input('Unique device name: ')
         # Initialize
         # Create controls
-        print('# Power')
+        print('\n# Power')
         power_control = control.BinaryControl.interactive_setup('power')
-        print('# Brightness')
+        print('\n# Brightness')
         brightness_control = control.LevelControl.interactive_setup('brightness')
-        print('# Tone')
+        print('\n# Tone')
         tone_control = control.LevelControl.interactive_setup('tone')
 
         print('--------------------')
@@ -43,7 +43,7 @@ class Light(IRDevice):
         print('--------------------')
         kwargs = additional_commands()
 
-        print('Set-up completed for Light "{}".'.format(device_id))  # TODO: Print summary of controllers
+        print('\nSet-up completed for Light "{}".'.format(device_id))  # TODO: Print summary of controllers
         return cls(device_id, power_control, brightness_control, tone_control, **kwargs)
 
 class TV(IRDevice):
@@ -65,17 +65,17 @@ class TV(IRDevice):
         device_id = input('Unique device name: ')
         # Initialize
         # Create controls
-        print('# Power')
+        print('\n# Power')
         power_control = control.BinaryControl.interactive_setup('power')
-        print('# Volume')
+        print('\n# Volume')
         volume_control = control.LevelControl.interactive_setup('volume')
-        print('# Channel')
+        print('\n# Channel')
         channel_control = control.PrevNextSeletableControl.interactive_setup('channel')
-        print('# Input source')
+        print('\n# Input source')
         input_source_control = control.NextSelectableControl.interactive_setup('input_source')
-        print('# Play/pause')
+        print('\n# Play/pause')
         video_play_control = control.BinaryControl.interactive_setup('video_play')
-        print('# Mute')
+        print('\n# Mute')
         mute_control = control.ToggleableControl.interactive_setup('mute')
 
         print('--------------------')
@@ -83,7 +83,7 @@ class TV(IRDevice):
         print('--------------------')
         kwargs = additional_commands()
 
-        print('Set-up completed for TV "{}".'.format(device_id))  # TODO: Print summary of controllers
+        print('\nSet-up completed for TV "{}".'.format(device_id))  # TODO: Print summary of controllers
         return cls(device_id, power_control, volume_control, channel_control, input_source_control,
                    video_play_control, mute_control, **kwargs)
 
@@ -105,15 +105,15 @@ class Aircon(IRDevice):
         device_id = input('Unique device name: ')
         # Initialize
         # Create controls
-        print('# Power')
+        print('\n# Power')
         power_control = control.BinaryControl.interactive_setup('power')
-        print('# Temperature')
+        print('\n# Temperature')
         temp_control = control.LevelControl.interactive_setup('temp')
-        print('# Fan speed')
+        print('\n# Fan speed')
         fan_speed_control = control.NextSelectableControl.interactive_setup('fan_speed')
-        print('# Mode')
+        print('\n# Mode')
         mode_control = control.NextSelectableControl.interactive_setup('mode')
-        print('# Swing')
+        print('\n# Swing')
         swing_control = control.NextSelectableControl.interactive_setup('swing')
 
         print('--------------------')
@@ -121,7 +121,7 @@ class Aircon(IRDevice):
         print('--------------------')
         kwargs = additional_commands()
 
-        print('Set-up completed for Light "{}".'.format(device_id))  # TODO: Print summary of controllers
+        print('\nSet-up completed for Light "{}".'.format(device_id))  # TODO: Print summary of controllers
         return cls(device_id, power_control, temp_control, fan_speed_control, mode_control, swing_control,
                    **kwargs)
 
