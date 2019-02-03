@@ -151,7 +151,7 @@ class NextSelectableControl(Control):
         if self.state == self.possible_states[-1]:
             self.set_state(self.possible_states[0])
         else:
-            i = self.possible_states.index(self.channel)
+            i = self.possible_states.index(self.state)
             self.set_state(self.possible_states[i+1])
         self.commands['next'].emit(emitter_gpio=IR_EMITTER_GPIO)
 
@@ -177,7 +177,7 @@ class PrevNextSeletableControl(Control):
         if self.state == self.possible_states[-1]:
             self.set_state(self.possible_states[0])
         else:
-            i = self.possible_states.index(self.channel)
+            i = self.possible_states.index(self.state)
             self.set_state(self.possible_states[i+1])
         self.commands['next'].emit(emitter_gpio=IR_EMITTER_GPIO)
 
@@ -185,7 +185,7 @@ class PrevNextSeletableControl(Control):
         if self.state == self.possible_states[0]:
             self.set_state(self.possible_states[-1])
         else:
-            i = self.possible_states.index(self.channel)
+            i = self.possible_states.index(self.state)
             self.set_state(self.possible_states[i-1])
         self.commands['previous'].emit(emitter_gpio=IR_EMITTER_GPIO)
 
