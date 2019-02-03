@@ -41,7 +41,7 @@ class Light(IRDevice):
 
         # Hack to change tone when light is turned on
         def on(self):
-            super().on()
+            power_control.on()
             tone_control.state = 5
         power_control.on = on.__get__(power_control)
 
