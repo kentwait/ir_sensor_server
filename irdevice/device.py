@@ -39,6 +39,7 @@ class Light(IRDevice):
         brightness_control = control.LevelControl.interactive_setup('brightness')
         print('\n# Tone')
         tone_control = control.LevelControl.interactive_setup('tone')
+
         print('\n# Bedroom preset')
         preset_bedroom_control = control.SetterControl.interactive_setup('preset_bedroom')
         print('\n# Dining preset')
@@ -94,6 +95,10 @@ class Light(IRDevice):
         print(' Additional setting ')
         print('--------------------')
         kwargs = additional_commands()
+        kwargs = {**kwargs, **{'dim': dim_control, 
+                               'preset_bedroom': preset_bedroom_control,
+                               'preset_dining': preset_dining_control,
+                               'preset_study': preset_study_control}}
 
         print('\nSet-up completed for Light "{}".'.format(device_id))  # TODO: Print summary of controllers
         return cls(device_id, power_control, brightness_control, tone_control, **kwargs)
