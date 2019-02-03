@@ -16,7 +16,10 @@ class IRDevice:
         if control.name in self.__dict__.keys():
             raise ValueError('controller name "{}" already belongs to an existing control'.format(control.name))
         object.__setattr__(self, control.name, control)
-
+    
+    @property
+    def commands(self):
+        return ['{}.{}'.format(k, cmd) for k, v in self.__dict__.items() if isinstance(v, control.Control) for cmd in v.commands.items()]
 
 class Light(IRDevice):
     def __init__(self, device_id, power_control, brightness_control, tone_control, **kwargs):
