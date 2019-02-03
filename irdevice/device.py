@@ -1,5 +1,6 @@
 from irdevice import control
 import re
+import types
 
 
 class IRDevice:
@@ -42,7 +43,7 @@ class Light(IRDevice):
         def on(self):
             super(self).on()
             tone_control.state = 5
-        power_control.on = on()
+        power_control.on = on.__get__(power_control)
 
         print('--------------------')
         print(' Additional setting ')
