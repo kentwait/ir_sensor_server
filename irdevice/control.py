@@ -31,7 +31,7 @@ class StatelessControl(Control):
     @classmethod
     def interactive_setup(cls, name=None):
         if name is None:
-            name = input('Unique command name: ').strip()
+            name = input('Unique control name: ').strip()
         description = input('Description: ').strip()
         possible_states = [None]
         print('Press the key after the queue.')
@@ -49,7 +49,7 @@ class SetterControl(Control):
     @classmethod
     def interactive_setup(cls, name=None):
         if name is None:
-            name = input('Unique command name: ').strip()
+            name = input('Unique control name: ').strip()
         state = input('Current state (True/False): ').strip()
         possible_states = [True, False]
         print('Press the key after the queue.')
@@ -71,7 +71,7 @@ class BinaryControl(Control):
     @classmethod
     def interactive_setup(cls, name=None):
         if name is None:
-            name = input('Unique command name: ').strip()
+            name = input('Unique control name: ').strip()
         state = input('Current state (True/False): ').strip()
         possible_states = [True, False]
         print('Press the "on" key after the queue.')
@@ -95,7 +95,7 @@ class ToggleableControl(BinaryControl):
     @classmethod
     def interactive_setup(cls, name=None):
         if name is None:
-            name = input('Unique command name: ').strip()
+            name = input('Unique control name: ').strip()
         state = input('Current state (True/False): ').strip()
         possible_states = [True, False]
         print('Press the key after the queue.')
@@ -120,7 +120,7 @@ class LevelControl(Control):
     @classmethod
     def interactive_setup(cls, name=None):
         if name is None:
-            name = input('Unique command name: ').strip()
+            name = input('Unique control name: ').strip()
         min_state = int(input('Minimum value: ').strip())
         max_state = int(input('Maximum value: ').strip())
         possible_states = range(min_state, max_state+1)
@@ -151,7 +151,7 @@ class NextSelectableControl(LevelControl):
     @classmethod
     def interactive_setup(cls, name=None):
         if name is None:
-            name = input('Unique command name: ').strip()
+            name = input('Unique control name: ').strip()
         possible_states = input('Possible states (seperate with commas ","): ').strip()
         possible_states = re.split(r'\s*\,\s*', possible_states)
         state = input('Current state: ').strip()
@@ -185,7 +185,7 @@ class PrevNextSeletableControl(LevelControl):
     @classmethod
     def interactive_setup(cls, name=None):
         if name is None:
-            name = input('Unique command name: ').strip()
+            name = input('Unique control name: ').strip()
         possible_states = input('Possible states (seperate with commas ","): ').strip()
         possible_states = re.split(r'\s*\,\s*', possible_states)
         state = input('Current state: ').strip()
