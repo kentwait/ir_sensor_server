@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from api.resources.device import Device, NewDevice
+from api.resources.device import Device
 from api.resources.sensor import Sensor
 
 app = Flask(__name__)
