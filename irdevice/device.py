@@ -14,7 +14,7 @@ class IRDevice:
         if control.name in self.__dict__.keys():
             raise ValueError('controller name "{}" already belongs to an existing control'.format(control.name))
         object.__setattr__(self, control.name, control)
-        
+
 
 class Light(IRDevice):
     def __init__(self, device_id, power_control, brightness_control, tone_control, **kwargs):
@@ -37,6 +37,12 @@ class Light(IRDevice):
         brightness_control = control.LevelControl.interactive_setup('brightness')
         print('\n# Tone')
         tone_control = control.LevelControl.interactive_setup('tone')
+
+        # Hack to change tone when light is turned on
+        def on(self):
+            super(self).on()
+            tone_control.state = 5
+        power_control.on = on()
 
         print('--------------------')
         print(' Additional setting ')
