@@ -112,9 +112,14 @@ class LevelControl(Control):
                          local_db=local_db, cloud_db=cloud_db)
 
     def up(self):
+        if self.state == self.possible_states.stop - 1:
+            raise ValueError('{} already at maximum'.format(self.name))  # TODO: create a new error for this
         self.commands['up'].emit(emitter_gpio=IR_EMITTER_GPIO)
+        self.start += 1
 
     def down(self):
+        if self.state == self.possible_states.start:
+            raise ValueError('{} already at minimum'.format(self.name))  # TODO: create a new error for this
         self.commands['down'].emit(emitter_gpio=IR_EMITTER_GPIO)
 
     @classmethod
