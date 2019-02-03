@@ -32,11 +32,11 @@ class Light(IRDevice):
         # Initialize
         # Create controls
         print('# Power')
-        power_control = control.BinaryControl.interactive_new('power')
+        power_control = control.BinaryControl.interactive_setup('power')
         print('# Brightness')
-        brightness_control = control.LevelControl.interactive_new('brightness')
+        brightness_control = control.LevelControl.interactive_setup('brightness')
         print('# Tone')
-        tone_control = control.LevelControl.interactive_new('tone')
+        tone_control = control.LevelControl.interactive_setup('tone')
 
         print('--------------------')
         print(' Additional setting ')
@@ -66,11 +66,11 @@ class TV(IRDevice):
         # Initialize
         # Create controls
         print('# Power')
-        power_control = control.BinaryControl.interactive_new('power')
+        power_control = control.BinaryControl.interactive_setup('power')
         print('# Volume')
-        volume_control = control.LevelControl.interactive_new('volume')
+        volume_control = control.LevelControl.interactive_setup('volume')
         print('# Channel')
-        channel_control = control.PrevNextSeletableControl.interactive_new('channel')
+        channel_control = control.PrevNextSeletableControl.interactive_setup('channel')
         print('# Input source')
         input_source_control = control.NextSelectableControl.interactive_setup('input_source')
         print('# Play/pause')
@@ -106,15 +106,15 @@ class Aircon(IRDevice):
         # Initialize
         # Create controls
         print('# Power')
-        power_control = control.BinaryControl.interactive_new('power')
+        power_control = control.BinaryControl.interactive_setup('power')
         print('# Temperature')
-        temp_control = control.LevelControl.interactive_new('temp')
+        temp_control = control.LevelControl.interactive_setup('temp')
         print('# Fan speed')
-        fan_speed_control = control.NextSelectableControl.interactive_new('fan_speed')
+        fan_speed_control = control.NextSelectableControl.interactive_setup('fan_speed')
         print('# Mode')
-        mode_control = control.NextSelectableControl.interactive_new('mode')
+        mode_control = control.NextSelectableControl.interactive_setup('mode')
         print('# Swing')
-        swing_control = control.NextSelectableControl.interactive_new('swing')
+        swing_control = control.NextSelectableControl.interactive_setup('swing')
 
         print('--------------------')
         print(' Additional setting ')
