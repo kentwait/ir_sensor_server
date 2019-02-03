@@ -1,5 +1,4 @@
-COMMAND_SHELVE_PATH = "commands.shelve"
-STATE_SHELVE_PATH = "states.shelve"
+DEVICES_SHELVE_PATH = "devices.shelve"
 SQLITE_PATH = "data.sqlite"
 IR_EMITTER_GPIO = 22
 IR_RECEIVER_GPIO = 23
