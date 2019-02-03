@@ -19,7 +19,7 @@ class IRDevice:
     
     @property
     def commands(self):
-        return ['{}.{}'.format(k, cmd) for k, v in self.__dict__.items() if isinstance(v, control.Control) for cmd in v.commands.items()]
+        return ['{}.{}'.format(k, cmd) for k, v in self.__dict__.items() if isinstance(v, control.Control) for cmd in v.commands.keys()]
 
 class Light(IRDevice):
     def __init__(self, device_id, power_control, brightness_control, tone_control, **kwargs):
