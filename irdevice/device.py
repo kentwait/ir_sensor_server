@@ -1,4 +1,4 @@
-from api.models import control
+from irdevice import control
 import re
 
 
