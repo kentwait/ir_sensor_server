@@ -28,7 +28,7 @@ class Light(IRDevice):
         print('--------------------')
         print(' Initial setting    ')
         print('--------------------')
-        device_id = input('Unique device name')
+        device_id = input('Unique device name: ')
         # Initialize
         # Create controls
         print('# Power')
@@ -62,7 +62,7 @@ class TV(IRDevice):
         print('-----------------')
         print(' Initial setting ')
         print('-----------------')
-        device_id = input('Unique device name')
+        device_id = input('Unique device name: ')
         # Initialize
         # Create controls
         print('# Power')
@@ -102,7 +102,7 @@ class Aircon(IRDevice):
         print('--------------------')
         print(' Initial setting    ')
         print('--------------------')
-        device_id = input('Unique device name')
+        device_id = input('Unique device name: ')
         # Initialize
         # Create controls
         print('# Power')
