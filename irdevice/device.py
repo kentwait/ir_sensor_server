@@ -1,5 +1,6 @@
 from api.config import IR_EMITTER_GPIO
 from irdevice import control
+from copy import deepcopy
 import re
 import types
 
@@ -57,42 +58,42 @@ class Light(IRDevice):
             self.commands['on'].emit(emitter_gpio=IR_EMITTER_GPIO)
             self.set_state(True)
             tone_control.set_state(5)
-        power_control.on = on.__get__(power_control)
+        power_control.on = deepcopy(on).__get__(power_control)
 
         def preset_bedroom_set(self):
             self.commands['set'].emit(emitter_gpio=IR_EMITTER_GPIO)
             self.set_state(True)
             brightness_control.set_state(3)
             tone_control.set_state(2)
-        preset_bedroom_control.set = preset_bedroom_set.__get__(preset_bedroom_control)
+        preset_bedroom_control.set = deepcopy(preset_bedroom_set).__get__(preset_bedroom_control)
         
         def preset_dining_set(self):
             self.commands['set'].emit(emitter_gpio=IR_EMITTER_GPIO)
             self.set_state(True)
             brightness_control.set_state(10)
             tone_control.set_state(2)
-        preset_dining_control.set = preset_dining_set.__get__(preset_dining_control)
+        preset_dining_control.set = deepcopy(preset_dining_set).__get__(preset_dining_control)
         
         def preset_study_set(self):
             self.commands['set'].emit(emitter_gpio=IR_EMITTER_GPIO)
             self.set_state(True)
             brightness_control.set_state(10)
             tone_control.set_state(8)
-        preset_study_control.set = preset_study_set.__get__(preset_study_control)
+        preset_study_control.set = deepcopy(preset_study_set).__get__(preset_study_control)
 
         def dim_on(self):
             self.commands['on'].emit(emitter_gpio=IR_EMITTER_GPIO)
             self.set_state(True)
             brightness_control.set_state(1)
             tone_control.set_state(1)
-        dim_control.on = dim_on.__get__(dim_control)
+        dim_control.on = deepcopy(dim_on).__get__(dim_control)
 
         def dim_off(self):
             self.commands['off'].emit(emitter_gpio=IR_EMITTER_GPIO)
             self.set_state(False)
             brightness_control.set_state(3)
             tone_control.set_state(2)
-        dim_control.off = dim_off.__get__(dim_control)
+        dim_control.off = deepcopy(dim_off).__get__(dim_control)
 
         print('--------------------')
         print(' Additional setting ')
