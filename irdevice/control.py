@@ -135,7 +135,7 @@ class LevelControl(Control):
         down_obj = Command.receive(name, IR_RECEIVER_GPIO)
         down_obj.normalize()
         print('Level control set-up completed.')
-        return cls(name, state, possible_states, 
+        return cls(name, state, min_state, max_state, 
                    {'up': up_obj, 'down': down_obj})
 
 
