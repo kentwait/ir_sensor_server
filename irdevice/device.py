@@ -1,3 +1,4 @@
+from api.config import IR_EMITTER_GPIO
 from irdevice import control
 import re
 import types
@@ -41,7 +42,8 @@ class Light(IRDevice):
 
         # Hack to change tone when light is turned on
         def on(self):
-            super(Light, self).on()
+            self.commands['on'].emit(emitter_gpio=IR_EMITTER_GPIO)
+            self.set_state(True)
             tone_control.state = 5
         power_control.on = on.__get__(power_control)
 
