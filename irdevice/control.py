@@ -146,7 +146,7 @@ class LevelControl(Control):
                    {'up': up_obj, 'down': down_obj})
 
 
-class NextSelectableControl(LevelControl):
+class NextSelectableControl(Control):
     def next(self):
         if self.state == self.possible_states[-1]:
             self.set_state(self.possible_states[0])
@@ -172,7 +172,7 @@ class NextSelectableControl(LevelControl):
         return cls(name, state, possible_states, {'next': command_obj})
 
 
-class PrevNextSeletableControl(LevelControl):
+class PrevNextSeletableControl(Control):
     def next(self):
         if self.state == self.possible_states[-1]:
             self.set_state(self.possible_states[0])
